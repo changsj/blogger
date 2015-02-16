@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :tags
+  resources :authors
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

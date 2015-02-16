@@ -42,3 +42,7 @@ group :development do
   gem 'guard'
   gem 'guard-livereload'
 end
+
+# Authentication
+gem 'sorcery'
+
