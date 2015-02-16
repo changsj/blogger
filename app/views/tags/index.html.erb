@@ -1,8 +1,13 @@
 <h1>All tags</h1>
 <ul>
   <% @tags.each do |tag| %>
-    <li><%= link_to tag, tag_path(tag) %> (<%= tag.articles.count %>) | <%= link_to 'delete', tag_path(tag), method: :delete, data: { confirm: "are you sure to delete ?" } %> </li>
+    <li><%= link_to tag, tag_path(tag) %> (<%= tag.articles.count %>) 
+
+      <% if logged_in? %>
+      | <%= link_to 'delete', tag_path(tag), method: :delete, data: { confirm: "are you sure to delete ?" } %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 <br />
-<%= link_to 'Back to Homepage', root_path %>
+<%= link_to '<< Back to Homepage', root_path %>
