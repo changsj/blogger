@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216055351) do
+ActiveRecord::Schema.define(version: 20150217214629) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,15 +21,22 @@ ActiveRecord::Schema.define(version: 20150216055351) do
   end
 
   create_table "authors", force: true do |t|
-    t.string   "username",         null: false
-    t.string   "email",            null: false
-    t.string   "crypted_password", null: false
-    t.string   "salt",             null: false
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "crypted_password",                null: false
+    t.string   "salt",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
   end
 
   add_index "authors", ["email"], name: "index_authors_on_email", unique: true
+  add_index "authors", ["remember_me_token"], name: "index_authors_on_remember_me_token"
+  add_index "authors", ["reset_password_token"], name: "index_authors_on_reset_password_token"
 
   create_table "comments", force: true do |t|
     t.string   "author_name"
